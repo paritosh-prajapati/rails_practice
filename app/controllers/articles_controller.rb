@@ -5,6 +5,13 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @article = Article.new(name: "...", email: "...", age: "...")
+
+    if @article.save
+      redirect_to @article
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
